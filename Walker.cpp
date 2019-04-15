@@ -6,7 +6,7 @@
 #include <string.h>
 #include <dirent.h>
 #include <sys/stat.h>
-#include <iostream>
+#include  <iostream>
 #include "Walker.h"
 #include "shell.h"
 
@@ -61,10 +61,10 @@ void Walker::parse_arguments(int argc, char **argv) {
             } catch (std::logic_error &) {
                 throw std::invalid_argument("Wrong -size argument");
             }
-        } else if ("-exec") {
+        } else if (strcmp(argv[i], "-exec") == 0) {
             execution = std::string(argv[++i]);
         } else {
-            throw std::invalid_argument("Wrong argument");
+            throw std::invalid_argument(std::string("Wrong argument: ") + argv[i]);
         }
     }
 }
